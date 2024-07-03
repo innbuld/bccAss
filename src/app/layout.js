@@ -13,8 +13,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} relative min-h-screen bg-cover bg-center pt`} style={{ backgroundImage: "url('/bg.png')" }}>
-        <div className=" bg-opacity-70 min-h-screen">
+      <body className={`${inter.className} relative min-h-screen bg-cover bg-center pt`} style={{ backgroundImage: "url('/bg.png')", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+        <div className="bg-opacity-70 min-h-screen">
           <Navbar />
           
           <div className="container mx-auto px-4 pt-16">
@@ -25,6 +25,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
-
-
