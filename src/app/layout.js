@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "../../components/navbar";
+import Dashboard from "../../components/dash";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} relative min-h-screen bg-cover bg-center pt`} style={{ backgroundImage: "url('/bg.png')" }}>
         <div className=" bg-opacity-70 min-h-screen">
           <Navbar />
+          
           <div className="container mx-auto px-4 pt-16">
             {children}
           </div>

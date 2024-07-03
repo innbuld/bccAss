@@ -1,8 +1,5 @@
 'use client';
-import Image from "next/image";
-import next from "next";
 import { useState, useEffect } from 'react';
-
 
 const assets = [
   { id: 'BTC', name: 'Bitcoin', symbol: 'BTC/USD' },
@@ -14,8 +11,7 @@ const assets = [
   { id: 'COMP', name: 'Compound', symbol: 'COMP/USD' },
 ];
 
-export default function Home() {
-
+export default function Dashboard() {
   const [prices, setPrices] = useState({});
 
   useEffect(() => {
@@ -35,32 +31,8 @@ export default function Home() {
     fetchPrices();
   }, []);
 
-
   return (
-    <div className="">
-      <div className="flex items-center justify-center pt-12 ">
-        <div className=" text-center">
-          <p className=" font-roboto text-white font-normal text-6xl">
-            {" "}
-            Easy send and Request
-          </p>
-          <p className="font-roboto text-white font-normal text-6xl">Crypto</p>
-        </div>
-      </div>
-
-      <div className="flex items-center justify-center pt-10">
-        <div className="text-center">
-          <p className=" font-roboto text-white text-lg
-          "> Bring blockchain to the people. Solana supports experiences </p>
-          <p className="font-roboto text-white text-lg"> for power users, new consumers, and everyone in between.</p>
-
-        </div>
-
-      </div>
-
-
-     <div>
-     <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4">
       <div className="overflow-x-auto">
         <table className="min-w-full bg-customBlack pt-5">
           <thead className="bg-customBlack text-white border-b">
@@ -108,10 +80,6 @@ export default function Home() {
         </div>
         <button className="bg-purple-500 text-black py-2 px-4 rounded mt-4">Swap Tokens</button>
       </div>
-      </div>
-     </div>
     </div>
-
-    
   );
 }
