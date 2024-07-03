@@ -18,7 +18,7 @@ module.exports = {
       },
       colors: {
         customPurple: '#9945FF',
-        customBlack: '#000000CC'
+        customBlack:  'rgba(0, 0, 0, 0.5)'
       },
     },
   },
