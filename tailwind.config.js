@@ -16,6 +16,9 @@ module.exports = {
       fontFamily: {
         'roboto': ['Roboto', 'sans-serif'],
       },
+      colors: {
+        customPurple: '#9945FF',
+      },
     },
   },
   plugins: [],
