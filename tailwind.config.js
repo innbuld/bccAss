@@ -14,11 +14,13 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        'roboto': ['Roboto', 'sans-serif'],
+        'roboto': ['inter', 'sans-serif'],
       },
       colors: {
         customPurple: '#9945FF',
-        customBlack:  'rgba(0, 0, 0, 0.5)'
+        customBlack:  'rgba(0, 0, 0, 0.5)',
+        customZinc: ' #FAFAFA',
+        
       },
     },
   },
