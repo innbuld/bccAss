@@ -48,12 +48,12 @@ export default function Home() {
 
       <div className=" pt-20 flex items-center justify-center">
         <div
-          className="relative bg-customBlack bg-opacity-50 rounded-lg overflow-hidden border border-gray-400 w-full max-w-4xl"
+          className="relative  backdrop-blur-lg bg-opacity-50 rounded-lg overflow-hidden border border-gray-400 w-full max-w-4xl"
           style={{ maxWidth: '1180px' }}>
-          <div className="container mx-auto p-4 bg-customBlack bg-opacity-75 pt-12">
+          <div className="container mx-auto p-4   bg-opacity-75 pt-12">
             <div className="overflow-x-auto">
-              <table className="min-w-full bg-customBlack bg-opacity-75 text-customZinc">
-                <thead className="bg-customBlack bg-opacity-75 font-roboto text-base text-customZinc border-b border-gray-600 ">
+              <table className="min-w-full  bg-opacity-75 text-customZinc">
+                <thead className="  bg-opacity-75 font-roboto text-base text-customZinc border-b border-gray-600 ">
                   <tr>
                     <th className="py-2 px-4 text-left">ASSETS</th>
 
@@ -65,7 +65,7 @@ export default function Home() {
                 </thead>
                 <tbody className="">
                   {assets.map((asset) => (
-                    <tr key={asset.id} className="bg-customBlack bg-opacity-75">
+                    <tr key={asset.id} className="  bg-opacity-75">
                       <td className="py-2 px-4 flex items-center pt-6 ">
                         <div className="overflow-hidden w-12 h-12 mr-2 rounded-md">
                           <img src={asset.imageUrl} alt={asset.symbol} className="w-full h-full object-cover" />
