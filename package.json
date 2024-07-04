@@ -2,7 +2,6 @@
   "name": "nextjs-bc",
   "version": "0.1.0",
   "private": true,
-  
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -18,6 +17,7 @@
   },
   "devDependencies": {
     "@types/react": "18.3.3",
+    "@typescript-eslint/eslint-plugin": "^7.15.0",
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.4",
