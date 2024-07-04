@@ -1,14 +1,22 @@
-'use client';
+'use client'
 import { useState, useEffect } from 'react';
+import { RiTokenSwapLine, RiBnbFill } from 'react-icons/ri';
+import { FaBtc, FaEthereum } from "react-icons/fa";
+import { SiTether } from "react-icons/si";
 
 export default function Home() {
   const [assets, setAssets] = useState([]);
-  const [amount1, setAmount1] = useState('');
-  const [amount2, setAmount2] = useState('');
-
-  const coins = ['BTC', 'BNB', 'ETH', 'USDT'];
   const [fromCoin, setFromCoin] = useState('BTC');
   const [toCoin, setToCoin] = useState('BNB');
+
+  const coins = ['BTC', 'BNB', 'ETH', 'USDT'];
+
+  const coinIcons = {
+    BTC: <FaBtc className="inline mr-2 text-2xl " />,
+    BNB: <RiBnbFill className="inline mr-2 text-2xl " />,
+    ETH: <FaEthereum className="inline mr-2 text-2xl " />,
+    USDT: <SiTether className="inline mr-2 text-2xl text-gray-500" />
+  };
 
   useEffect(() => {
     async function fetchAssets() {
@@ -37,6 +45,27 @@ export default function Home() {
     }
   }
 
+  function CoinSelect({ selectedCoin, setSelectedCoin }) {
+    return (
+      <div className="relative">
+        <span className="absolute left-2 top-1/2 transform -translate-y-1/2">
+          {coinIcons[selectedCoin]}
+        </span>
+        <select
+          className="bg-black border-none text-white h-[37px] pl-10 pr-8 text-lg font-semibold"
+          value={selectedCoin}
+          onChange={(e) => setSelectedCoin(e.target.value)}
+          style={{ appearance: 'none' }}>
+          {coins.map((coin) => (
+            <option key={coin} value={coin}>
+              {coin}
+            </option>
+          ))}
+        </select>
+      </div>
+    );
+  }
+
   return (
     <div className="">
       <div className="flex items-center justify-center pt-12">
@@ -55,7 +84,7 @@ export default function Home() {
 
       <div className="pt-20 flex items-center justify-center">
         <div
-          className="relative backdrop-blur-2xl bg-opacity-50 rounded-lg overflow-hidden border border-gray-400 w-full max-w-4xl"
+          className="relative backdrop-blur-2xl bg-opacity-50 rounded-lg overflow-hidden border border-customGray w-full max-w-4xl"
           style={{ maxWidth: '1180px' }}>
           <div className="container mx-auto p-4 bg-opacity-75 pt-12">
             <div className="overflow-x-auto">
@@ -104,77 +133,66 @@ export default function Home() {
       </div>
 
       <div className="flex pb-20 items-center justify-center min-h-screen bg-black text-white">
-  <div className="w-full max-w-[1179px] p-6 bg-black rounded-lg shadow-lg border border-ash">
-    <div className="flex items-center justify-between mb-6">
-      <h1 className="text-2xl font-bold">SWAP TOKENS</h1>
-      <img src="/set.png" alt="set Logo" />
-    </div>
+        <div className="w-full max-w-[1179px] p-6 bg-black rounded-lg shadow-lg border border-customGray ">
+          <div className="flex items-center justify-between mb-6">
+            <h1 className="text-2xl font-bold">SWAP TOKENS</h1>
+            <img src="/set.png" alt="set Logo" />
+          </div>
 
-    <div className="flex items-center justify-center p-4 bg-customAsh rounded-lg">
-      <div className="flex  flex-col items-start space-y-2 mr-4">
-        <div className="flex items-center space-x-4">
-          <input
-            type="number"
-            className="w-24 p-2 text-xl bg-transparent border-b-2 border-gray-700 focus:outline-none"
-            placeholder="0.00"
-          />
-          <select
-            className="bg-black border-none text-white w-[94px] h-[37px]"
-            value={fromCoin}
-            onChange={(e) => setFromCoin(e.target.value)}
-          >
-            {coins.map((coin) => (
-              <option key={coin} value={coin}>{coin}</option>
-            ))}
-          </select>
-        </div>
-        <div className="flex items-center justify-between w-full">
-          <p className="text-sm text-gray-500">$0.00</p>
-          <p className="text-sm">Balance: <span className="text-blue-500">24,240</span></p>
+          <div className="w-full flex items-center justify-center relative gap-1 ">
+            <div className="w-full flex flex-col items-start space-y-2 bg-customAsh  py-4 px-6 rounded-tl-lg rounded-bl-lg">
+              <div className="w-full flex items-center space-x-4 justify-between">
+                <input
+                  type="number"
+                  className="w-24 p-2 text-xl bg-transparent focus:outline-none "
+                  placeholder="0.00"
+                />
+                <CoinSelect selectedCoin={fromCoin} setSelectedCoin={setFromCoin} />
+              </div>
+              <div className="flex items-center justify-between w-full">
+                <p className="text-sm text-gray-500">$0.00</p>
+                <p className="text-sm">
+                  Balance: <span className="text-blue-500">24,240</span>
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-black absolute rounded-full p-1">
+              <RiTokenSwapLine className="w-8 h-8" />
+            </div>
+
+            <div className="w-full flex flex-col items-start space-y-2 bg-customAsh py-4 px-6 rounded-tr-lg rounded-br-lg">
+              <div className="w-full flex items-center space-x-4 justify-between">
+                <input
+                  type="number"
+                  className="w-24 p-2 text-xl bg-transparent  focus:outline-none"
+                  placeholder="0.00"
+                />
+                <CoinSelect selectedCoin={toCoin} setSelectedCoin={setToCoin} className="text-gray-500"  />
+              </div>
+              <div className="flex items-center justify-between w-full">
+                <p className="text-sm text-gray-500">$0.00</p>
+                <p className="text-sm">
+                  Balance: <span className="text-blue-500">63,790</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <button className="block mx-auto w-[195px] py-2 mt-6 text-lg font-semibold text-center text-white bg-purple-600 rounded-tl-lg rounded-br-lg hover:bg-purple-500">
+            SWAP TOKENS
+          </button>
+
+          <div className="flex flex-col justify-between mt-4 text-sm ">
+            <p className="mb-2">1 BTC = 32.4039 ETH</p>
+            <a href="#" className="text-blue-500 hover:underline">
+              Free exchange
+            </a>
+          </div>
+
+          <p className="mt-2 text-right text-gray-500">Updates in 4s</p>
         </div>
       </div>
-
-      <img src="/icon.png" alt="Swap" className="w-6 h-6 mx-4" />
-
-      <div className="flex flex-col items-start space-y-2 ml-4">
-        <div className="flex items-center space-x-4">
-          <input
-            type="number"
-            className="w-24 p-2 text-xl bg-transparent border-b-2 border-gray-700 focus:outline-none"
-            placeholder="0.00"
-          />
-          <select
-            className="bg-black border-none text-white w-[94px] h-[37px] ml-60"
-            value={toCoin}
-            onChange={(e) => setToCoin(e.target.value)}
-          >
-            {coins.map((coin) => (
-              <option key={coin} value={coin}>{coin}</option>
-            ))}
-          </select>
-        </div>
-        <div className="flex items-center justify-between w-full">
-          <p className="text-sm text-gray-500">$0.00</p>
-          <p className="text-sm">Balance: <span className="text-blue-500">63,790</span></p>
-        </div>
-      </div>
-
-    </div>
-
-    <button className="block mx-auto w-[195px] py-2 mt-6 text-lg font-semibold text-center text-white bg-purple-600 rounded-lg hover:bg-purple-500">
-      SWAP TOKENS
-    </button>
-
-    <div className="flex flex-col justify-between mt-4 text-sm text-gray-500">
-      <p className="mb-2">1 BTC = 32.4039 ETH</p>
-      <a href="#" className="text-blue-500 hover:underline">Free exchange</a>
-    </div>
-
-    <p className="mt-2 text-right text-gray-500">Updates in 4s</p>
-  </div>
-     </div>
-
-
     </div>
   );
 }
