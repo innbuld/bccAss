@@ -2,13 +2,13 @@
 import { useState, useEffect } from 'react';
 
 const assets = [
-  { id: 'BTC', name: 'Bitcoin', symbol: 'BTC/USD', imageUrl: './bt.png' },
-  { id: 'ETH', name: 'Ethereum', symbol: 'ETH/USD', imageUrl: '/ett.png' },
-  { id: 'DOGE', name: 'Dogecoin', symbol: 'DOGE/USD', imageUrl: '/dt.png' },
-  { id: 'ALGO', name: 'Algorand', symbol: 'ALGO/USD', imageUrl: '/al.png' },
-  { id: 'DOT', name: 'Polkadot', symbol: 'DOT/USD', imageUrl: '/pol.png' },
-  { id: 'UNI', name: 'Uniswap', symbol: 'UNI/USD', imageUrl: '/ui.png' },
-  { id: 'COMP', name: 'Compound', symbol: 'COMP/USD', imageUrl: '/com.png' },
+  { id: 'BTC', name: 'Bitcoin', symbol: 'BTC/USD', imageUrl: '/bt.png', price: 30000, thour: 2.2, hour: 4000 },
+  { id: 'ETH', name: 'Ethereum', symbol: 'ETH/USD', imageUrl: '/ett.png', price: 2000, thour: 2.2, hour: 4000 },
+  { id: 'DOGE', name: 'Dogecoin', symbol: 'DOGE/USD', imageUrl: '/dt.png', price: 0.2, thour: 2.2, hour: 4000 },
+  { id: 'ALGO', name: 'Algorand', symbol: 'ALGO/USD', imageUrl: '/al.png', price: 100, thour: 2.2, hour: 4000 },
+  { id: 'DOT', name: 'Polkadot', symbol: 'DOT/USD', imageUrl: '/pol.png', price: 15, thour: 2.2, hour: 4000 },
+  { id: 'UNI', name: 'Uniswap', symbol: 'UNI/USD', imageUrl: '/ui.png', price: 25, thour: 2.2, hour: 4000 },
+  { id: 'COMP', name: 'Compound', symbol: 'COMP/USD', imageUrl: '/com.png', price: 500, thour: 2.2, hour: 4000 },
 ];
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchPrices() {
       const responses = await Promise.all(
-        assets.map((asset) => fetch(`https://api.example.com/price/${asset.id}`).then((response) => response.json())),
+        assets.map((asset) => fetch(`${asset.id}`).then((response) => response.json())),
       );
       const newPrices = {};
       responses.forEach((data, index) => {
@@ -48,7 +48,7 @@ export default function Home() {
 
       <div className=" pt-20 flex items-center justify-center">
         <div
-          className="relative  backdrop-blur-lg bg-opacity-50 rounded-lg overflow-hidden border border-gray-400 w-full max-w-4xl"
+          className="relative  backdrop-blur-2xl bg-opacity-50 rounded-lg overflow-hidden border border-gray-400 w-full max-w-4xl"
           style={{ maxWidth: '1180px' }}>
           <div className="container mx-auto p-4   bg-opacity-75 pt-12">
             <div className="overflow-x-auto">
@@ -72,7 +72,7 @@ export default function Home() {
                         </div>
                         {asset.symbol}
                       </td>
-                      <td className="py-2 px-4">{prices[asset.id] || 'Loading...'}</td>
+                      <td className="py-2 px-4">-</td>
                       <td className="py-2 px-4">-</td>
                       <td className="py-2 px-4">-</td>
                       <td className="py-2 px-4">
