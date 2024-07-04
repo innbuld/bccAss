@@ -56,13 +56,14 @@ export default function Home() {
           <div className="container mx-auto p-4 bg-opacity-75 pt-12">
             <div className="overflow-x-auto">
               <table className="min-w-full bg-opacity-75 text-customZinc">
-                <thead className="bg-opacity-75 font-roboto text-base text-customZinc border-b border-gray-600">
+                <thead className="bg-opacity-75 text-lg font-roboto  text-customZinc border-b border-gray-600">
                   <tr>
                     <th className="py-2 px-4 text-left">ASSETS</th>
                     <th className="py-2 px-4 text-left">LAST TRADE</th>
                     <th className="py-2 px-4 text-left">24H %</th>
                     <th className="py-2 px-4 text-left">24H CHANGE</th>
-                    <th className="py-2 px-4 text-left">MORE</th>
+                    <th className="py-2 px-4 text-left text-blue-500">MORE</th>
+
                   </tr>
                 </thead>
                 <tbody className="">
@@ -70,18 +71,18 @@ export default function Home() {
                     const [symbolBase, symbolQuote] = asset.symbol.split('/');
                     return (
                       <tr key={asset.id} className="bg-opacity-75">
-                        <td className="py-2 px-4 flex items-center pt-6">
-                          <div className="overflow-hidden w-12 h-12 mr-2 rounded-md">
-                            <img src={asset.imageUrl} alt={asset.symbol} className="w-full h-full object-cover" />
+                        <td className="py-2 px-4 flex items-center pt-5">
+                          <div className="overflow-hidden w-14 h-14 mr-2 rounded-md ">
+                            <img src={asset.imageUrl} alt={asset.symbol} className="w-full h-full object-cover " />
                           </div>
-                          <span className="text-white">{symbolBase}/</span>
-                          <span className="text-gray-500">{symbolQuote}</span>
+                          <span className="text-white text-lg">{symbolBase}/</span>
+                          <span className="text-gray-500 text-lg">{symbolQuote}</span>
                         </td>
-                        <td className="">${formatPrice(asset.price)}</td>
-                        <td className={`py-2 px-4 ${asset.thour === 0 ? 'text-gray-500' : asset.thour > 0 ? 'text-green-500' : 'text-red-500'}`}>
+                        <td className="text-lg">${formatPrice(asset.price)}</td>
+                        <td className={`py-2 px-4 text-lg ${asset.thour === 0 ? 'text-gray-500' : asset.thour > 0 ? 'text-green-500' : 'text-red-500'}`}>
                           {formatChange(asset.thour, true)}
                         </td>
-                        <td className={`py-2 px-4 ${asset.hour === 0 ? 'text-gray-500' : asset.hour > 0 ? 'text-green-500' : 'text-red-500'}`}>
+                        <td className={`py-2 px-4 text-lg ${asset.hour === 0 ? 'text-gray-500' : asset.hour > 0 ? 'text-green-500' : 'text-red-500'}`}>
                           {formatChange(asset.hour, false)}
                         </td>
                         <td className="py-2 px-4">
