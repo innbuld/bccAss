@@ -56,22 +56,25 @@ export default function Home() {
                   </tr>
                 </thead>
                 <tbody className="">
-                  {assets.map((asset) => (
-                    <tr key={asset.id} className="bg-opacity-75">
-                      <td className="py-2 px-4 flex items-center pt-6">
-                        <div className="overflow-hidden w-12 h-12 mr-2 rounded-md">
-                          <img src={asset.imageUrl} alt={asset.symbol} className="w-full h-full object-cover" />
-                        </div>
-                        {asset.symbol}
-                      </td>
-                      <td className={`py-2 px-4 ${asset.price > 10000 ? 'text-green-500' : 'text-red-500'}`}>{formatPrice(asset.price)}</td>
-                      <td className="py-2 px-4">{asset.hour}</td>
-                      <td className="py-2 px-4">{asset.thour}</td>
-                      <td className="py-2 px-4">
-                        <button className="bg-green-500 text-white py-1 px-2 rounded">Trade</button>
-                      </td>
-                    </tr>
-                  ))}
+                  {assets.map((asset) => {
+                    const [symbolBase, symbolQuote] = asset.symbol.split('/');
+                    return (
+                      <tr key={asset.id} className="bg-opacity-75">
+                        <td className="py-2 px-4 flex items-center pt-6">
+                          <div className="overflow-hidden w-12 h-12 mr-2 rounded-md">
+                            <img src={asset.imageUrl} alt={asset.symbol} className="w-full h-full object-cover" />
+                          </div>
+                          <span className="text-white">{symbolBase}/</span><span className="text-gray-500">{symbolQuote}</span>
+                        </td>
+                        <td className={`py-2 px-4 ${asset.price > 10000 ? 'text-green-500' : 'text-red-500'}`}>${formatPrice(asset.price)}</td>
+                        <td className="py-2 px-4">{asset.hour}</td>
+                        <td className="py-2 px-4">{asset.thour}</td>
+                        <td className="py-2 px-4">
+                          <button className="bg-green-500 text-white py-1 px-2 rounded">Trade</button>
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
