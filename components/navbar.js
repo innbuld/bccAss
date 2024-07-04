@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between px-4 py-2 bg-opacity-70">
       <div className="flex items-center"> {/* Ensure flex items center alignment */}
-        <div className="mr-auto"> {/* Margin to push logo to the right */}
+        <div className=" mr-5"> {/* Margin to push logo to the right */}
           <img src="/logo.png" alt="Blockchain Logo" />
         </div>
       </div>
