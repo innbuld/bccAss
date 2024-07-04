@@ -72,7 +72,7 @@ export default function Home() {
                         </div>
                         {asset.symbol}
                       </td>
-                      <td className="py-2 px-4">-</td>
+                      <td className="py-2 px-4">{asset.price}</td>
                       <td className="py-2 px-4">-</td>
                       <td className="py-2 px-4">-</td>
                       <td className="py-2 px-4">
