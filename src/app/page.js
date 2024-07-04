@@ -23,6 +23,16 @@ export default function Home() {
     return price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
 
+  function formatChange(value, isThour) {
+    if (value > 0) {
+      return isThour ? `+${value.toFixed(2)}%` : `+$${value.toFixed(2)}`;
+    } else if (value < 0) {
+      return isThour ? `${value.toFixed(2)}%` : `-$${Math.abs(value).toFixed(2)}`;
+    } else {
+      return isThour ? '0.00%' : '$0.00';
+    }
+  }
+
   return (
     <div className="">
       <div className="flex items-center justify-center pt-12">
@@ -64,11 +74,16 @@ export default function Home() {
                           <div className="overflow-hidden w-12 h-12 mr-2 rounded-md">
                             <img src={asset.imageUrl} alt={asset.symbol} className="w-full h-full object-cover" />
                           </div>
-                          <span className="text-white">{symbolBase}/</span><span className="text-gray-500">{symbolQuote}</span>
+                          <span className="text-white">{symbolBase}/</span>
+                          <span className="text-gray-500">{symbolQuote}</span>
                         </td>
-                        <td className={`py-2 px-4 ${asset.price > 10000 ? 'text-green-500' : 'text-red-500'}`}>${formatPrice(asset.price)}</td>
-                        <td className="py-2 px-4">{asset.hour}</td>
-                        <td className="py-2 px-4">{asset.thour}</td>
+                        <td className="">${formatPrice(asset.price)}</td>
+                        <td className={`py-2 px-4 ${asset.thour === 0 ? 'text-gray-500' : asset.thour > 0 ? 'text-green-500' : 'text-red-500'}`}>
+                          {formatChange(asset.thour, true)}
+                        </td>
+                        <td className={`py-2 px-4 ${asset.hour === 0 ? 'text-gray-500' : asset.hour > 0 ? 'text-green-500' : 'text-red-500'}`}>
+                          {formatChange(asset.hour, false)}
+                        </td>
                         <td className="py-2 px-4">
                           <button className="bg-green-500 text-white py-1 px-2 rounded">Trade</button>
                         </td>
