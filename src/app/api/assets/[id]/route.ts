@@ -1,7 +1,3 @@
-
-
-
-
 // Import necessary modules and PrismaClient
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
@@ -65,5 +61,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Failed to create asset' }, { status: 500 });
   }
 }
-
-

@@ -16,11 +16,13 @@
   }
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
-#root, .container {
+#root,
+.container {
   height: 100%;
 }
 
@@ -29,31 +31,23 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 0.75rem 1rem;
   text-align: left;
 }
 
 ::placeholder {
-  color: #ffffff; 
+  color: #ffffff;
 }
-
-
-
 
 .bg-black {
   background-color: black;
 }
 
-
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 @layer utilities {

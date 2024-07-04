@@ -44,7 +44,6 @@ export default function Home() {
       return isThour ? '0.00%' : '$0.00';
     }
   }
-  
 
   function CoinSelect({ selectedCoin, setSelectedCoin }) {
     return (
@@ -95,8 +94,6 @@ export default function Home() {
                     <th className="py-2 px-4 text-left">24H %</th>
                     <th className="py-2 px-4 text-left">24H CHANGE</th>
                     <th className="py-2 px-4 text-left text-blue-500">MORE &#62; </th>
-
-
                   </tr>
                 </thead>
                 <tbody className="">
@@ -181,7 +178,6 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            
           </div>
 
           <button className="block mx-auto w-[195px] py-2 mt-6 text-base font-roboto text-center text-white bg-purple-600 rounded-tl-lg rounded-br-lg hover:bg-purple-500">
