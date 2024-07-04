@@ -20,6 +20,7 @@ module.exports = {
         customPurple: '#9945FF',
         customBlack:  'rgba(0, 0, 0, 0.5)',
         customZinc: ' #FAFAFA',
+       
         
       },
     },
