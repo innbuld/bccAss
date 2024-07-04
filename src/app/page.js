@@ -1,33 +1,22 @@
 'use client';
 import { useState, useEffect } from 'react';
 
-const assets = [
-  { id: 'BTC', name: 'Bitcoin', symbol: 'BTC/USD', imageUrl: '/bt.png', price: 30000, thour: 2.2, hour: 4000 },
-  { id: 'ETH', name: 'Ethereum', symbol: 'ETH/USD', imageUrl: '/ett.png', price: 2000, thour: 2.2, hour: 4000 },
-  { id: 'DOGE', name: 'Dogecoin', symbol: 'DOGE/USD', imageUrl: '/dt.png', price: 0.2, thour: 2.2, hour: 4000 },
-  { id: 'ALGO', name: 'Algorand', symbol: 'ALGO/USD', imageUrl: '/al.png', price: 100, thour: 2.2, hour: 4000 },
-  { id: 'DOT', name: 'Polkadot', symbol: 'DOT/USD', imageUrl: '/pol.png', price: 15, thour: 2.2, hour: 4000 },
-  { id: 'UNI', name: 'Uniswap', symbol: 'UNI/USD', imageUrl: '/ui.png', price: 25, thour: 2.2, hour: 4000 },
-  { id: 'COMP', name: 'Compound', symbol: 'COMP/USD', imageUrl: '/com.png', price: 500, thour: 2.2, hour: 4000 },
-];
-
 export default function Home() {
-  const [prices, setPrices] = useState({});
+  const [assets, setAssets] = useState([]);
   const [amount1, setAmount1] = useState('');
   const [amount2, setAmount2] = useState('');
 
   useEffect(() => {
-    async function fetchPrices() {
-      const responses = await Promise.all(
-        assets.map((asset) => fetch(`${asset.id}`).then((response) => response.json())),
-      );
-      const newPrices = {};
-      responses.forEach((data, index) => {
-        newPrices[assets[index].id] = data.price;
-      });
-      setPrices(newPrices);
+    async function fetchAssets() {
+      try {
+        const response = await fetch('/api/assets');
+        const data = await response.json();
+        setAssets(data);
+      } catch (error) {
+        console.error('Failed to fetch assets:', error);
+      }
     }
-    fetchPrices();
+    fetchAssets();
   }, []);
 
   return (
@@ -72,9 +61,9 @@ export default function Home() {
                         </div>
                         {asset.symbol}
                       </td>
-                      <td className="py-2 px-4">{asset.price}</td>
-                      <td className="py-2 px-4">-</td>
-                      <td className="py-2 px-4">-</td>
+                      <td className="py-2 px-4">${asset.price}</td>
+                      <td className="py-2 px-4">{asset.hour}</td>
+                      <td className="py-2 px-4">{asset.thour}</td>
                       <td className="py-2 px-4">
                         <button className="bg-green-500 text-white py-1 px-2 rounded">Trade</button>
                       </td>
@@ -86,8 +75,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-     
     </div>
   );
 }
