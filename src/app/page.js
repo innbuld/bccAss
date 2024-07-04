@@ -1,8 +1,8 @@
-'use client'
+'use client';
 import { useState, useEffect } from 'react';
 import { RiTokenSwapLine, RiBnbFill } from 'react-icons/ri';
-import { FaBtc, FaEthereum } from "react-icons/fa";
-import { SiTether } from "react-icons/si";
+import { FaBtc, FaEthereum } from 'react-icons/fa';
+import { SiTether } from 'react-icons/si';
 
 export default function Home() {
   const [assets, setAssets] = useState([]);
@@ -15,7 +15,7 @@ export default function Home() {
     BTC: <FaBtc className="inline mr-2 text-2xl " />,
     BNB: <RiBnbFill className="inline mr-2 text-2xl " />,
     ETH: <FaEthereum className="inline mr-2 text-2xl " />,
-    USDT: <SiTether className="inline mr-2 text-2xl text-gray-500" />
+    USDT: <SiTether className="inline mr-2 text-2xl text-gray-500" />,
   };
 
   useEffect(() => {
@@ -48,9 +48,7 @@ export default function Home() {
   function CoinSelect({ selectedCoin, setSelectedCoin }) {
     return (
       <div className="relative">
-        <span className="absolute left-2 top-1/2 transform -translate-y-1/2">
-          {coinIcons[selectedCoin]}
-        </span>
+        <span className="absolute left-2 top-1/2 transform -translate-y-1/2">{coinIcons[selectedCoin]}</span>
         <select
           className="bg-black border-none text-white h-[37px] pl-10 pr-8 text-lg font-semibold"
           value={selectedCoin}
@@ -95,7 +93,9 @@ export default function Home() {
                     <th className="py-2 px-4 text-left">LAST TRADE</th>
                     <th className="py-2 px-4 text-left">24H %</th>
                     <th className="py-2 px-4 text-left">24H CHANGE</th>
-                    <th className="py-2 px-4 text-left text-blue-500">MORE</th>
+                    <th className="py-2 px-4 text-left text-blue-500">MORE &#62; </th>
+
+
                   </tr>
                 </thead>
                 <tbody className="">
@@ -104,7 +104,7 @@ export default function Home() {
                     return (
                       <tr key={asset.id} className="bg-opacity-75">
                         <td className="py-2 px-4 flex items-center pt-5">
-                          <div className="overflow-hidden w-14 h-14 mr-2 rounded-md ">
+                          <div className="overflow-hidden w-14 h-14 mr-2 rounded-lg  ">
                             <img src={asset.imageUrl} alt={asset.symbol} className="w-full h-full object-cover " />
                           </div>
                           <span className="text-white text-lg">{symbolBase}/</span>
@@ -120,7 +120,7 @@ export default function Home() {
                           {formatChange(asset.hour, false)}
                         </td>
                         <td className="py-2 px-4">
-                          <button className="bg-green-500 text-white py-1 px-2 rounded">Trade</button>
+                          <button className="bg-green-500 text-white py-1 px-2 ">Trade</button>
                         </td>
                       </tr>
                     );
@@ -141,12 +141,14 @@ export default function Home() {
 
           <div className="w-full flex items-center justify-center relative gap-1 ">
             <div className="w-full flex flex-col items-start space-y-2 bg-customAsh  py-4 px-6 rounded-tl-lg rounded-bl-lg">
-              <div className="w-full flex items-center space-x-4 justify-between">
+              <div className="w-full flex items-center space-x-4 justify-between text-white">
                 <input
-                  type="number"
-                  className="w-24 p-2 text-xl bg-transparent focus:outline-none "
+                  type="text"
+                  className="w-24 p-2 text-4xl bg-transparent focus:outline-none placeholder-white"
                   placeholder="0.00"
+                  style={{ color: '#ffffff' }}
                 />
+
                 <CoinSelect selectedCoin={fromCoin} setSelectedCoin={setFromCoin} />
               </div>
               <div className="flex items-center justify-between w-full">
@@ -164,11 +166,12 @@ export default function Home() {
             <div className="w-full flex flex-col items-start space-y-2 bg-customAsh py-4 px-6 rounded-tr-lg rounded-br-lg">
               <div className="w-full flex items-center space-x-4 justify-between">
                 <input
-                  type="number"
-                  className="w-24 p-2 text-xl bg-transparent  focus:outline-none"
+                  type="text"
+                  className="w-24 p-2 text-4xl bg-transparent  focus:outline-none placeholder-white"
                   placeholder="0.00"
+                  style={{ color: '#ffffff' }}
                 />
-                <CoinSelect selectedCoin={toCoin} setSelectedCoin={setToCoin} className="text-gray-500"  />
+                <CoinSelect selectedCoin={toCoin} setSelectedCoin={setToCoin} className="text-gray-500" />
               </div>
               <div className="flex items-center justify-between w-full">
                 <p className="text-sm text-gray-500">$0.00</p>
@@ -177,10 +180,11 @@ export default function Home() {
                 </p>
               </div>
             </div>
+            
           </div>
 
-          <button className="block mx-auto w-[195px] py-2 mt-6 text-lg font-semibold text-center text-white bg-purple-600 rounded-tl-lg rounded-br-lg hover:bg-purple-500">
-            SWAP TOKENS
+          <button className="block mx-auto w-[195px] py-2 mt-6 text-base font-roboto text-center text-white bg-purple-600 rounded-tl-lg rounded-br-lg hover:bg-purple-500">
+            SWOP TOKENS
           </button>
 
           <div className="flex flex-col justify-between mt-4 text-sm ">

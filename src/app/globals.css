@@ -34,17 +34,12 @@ th, td {
   text-align: left;
 }
 
-th {
-  
+::placeholder {
+  color: #ffffff; 
 }
 
-tbody tr:nth-child(even) {
- 
-}
 
-tbody tr:nth-child(odd) {
 
-}
 
 .bg-black {
   background-color: black;
