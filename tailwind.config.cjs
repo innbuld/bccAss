@@ -21,7 +21,8 @@ module.exports = {
         customBlack:  'rgba(0, 0, 0, 0.5)',
         customZinc: ' #FAFAFA',
         customAsh:' #1E1E1E',
-        customGray:'#464646'
+        customGray:'#464646',
+        customGreen:'#6DFFDC'
         
        
         

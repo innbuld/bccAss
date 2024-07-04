@@ -37,13 +37,14 @@ export default function Home() {
 
   function formatChange(value, isThour) {
     if (value > 0) {
-      return isThour ? `+${value.toFixed(2)}%` : `+$${value.toFixed(2)}`;
+      return isThour ? `${value.toFixed(2)}%` : `$${value.toFixed(2)}`;
     } else if (value < 0) {
       return isThour ? `${value.toFixed(2)}%` : `-$${Math.abs(value).toFixed(2)}`;
     } else {
       return isThour ? '0.00%' : '$0.00';
     }
   }
+  
 
   function CoinSelect({ selectedCoin, setSelectedCoin }) {
     return (
@@ -112,11 +113,11 @@ export default function Home() {
                         </td>
                         <td className="text-lg">${formatPrice(asset.price)}</td>
                         <td
-                          className={`py-2 px-4 text-lg ${asset.thour === 0 ? 'text-gray-500' : asset.thour > 0 ? 'text-green-500' : 'text-red-500'}`}>
+                          className={`py-2 px-4 text-lg ${asset.thour === 0 ? 'text-gray-500' : asset.thour > 0 ? 'text-customGreen' : 'text-red-500'}`}>
                           {formatChange(asset.thour, true)}
                         </td>
                         <td
-                          className={`py-2 px-4 text-lg ${asset.hour === 0 ? 'text-gray-500' : asset.hour > 0 ? 'text-green-500' : 'text-red-500'}`}>
+                          className={`py-2 px-4 text-lg ${asset.hour === 0 ? 'text-gray-500' : asset.hour > 0 ? 'text-customGreen' : 'text-red-500'}`}>
                           {formatChange(asset.hour, false)}
                         </td>
                         <td className="py-2 px-4">
