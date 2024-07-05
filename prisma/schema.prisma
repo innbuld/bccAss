@@ -1,18 +1,19 @@
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
-  provider = "mongodb"
-  url      = env("DATABASE_URL")
-}
-
-model Asset {
-  id        String  @id @default(auto()) @map("_id") @db.ObjectId
-  name      String
-  symbol    String
-  imageUrl  String
-  price     Float
-  hour      Float
-  thour     Float
-}
+    provider = "sqlite"
+    url      = "file:./dev.db"
+  }
+  
+  generator client {
+    provider = "prisma-client-js"
+    output   = "./generated/client"
+  }
+  
+  model Asset {
+    id        String  @id @default(cuid())
+    name      String
+    symbol    String
+    imageUrl  String
+    price     Float
+    hour      Float
+    thour     Float
+  }
