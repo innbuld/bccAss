@@ -1,11 +1,11 @@
-// Import necessary modules and PrismaClient
+
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 
-// Initialize PrismaClient
+
 const prisma = new PrismaClient();
 
-// GET endpoint to fetch all assets
+
 export async function GET() {
   try {
     const assets = await prisma.asset.findMany({
@@ -26,7 +26,6 @@ export async function GET() {
   }
 }
 
-// POST endpoint to create a new asset
 export async function POST(req: NextRequest) {
   try {
     // Extract data from request body
@@ -53,7 +52,6 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Return the newly created asset as JSON response with status 201 (Created)
     return NextResponse.json(newAsset, { status: 201 });
   } catch (error) {
     console.error('Error creating asset:', error);
